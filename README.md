@@ -20,7 +20,7 @@ Convolutional neural networks (CNN), that perform extremely well for object clas
 extendible to 3D point clouds analysis. It is not straightforward due to point clouds' irregular format and a varying 
 number of points. The common solution of transforming the point cloud data into a 3D voxel grid needs to address severe
  accuracy vs memory size tradeoffs.  In this paper we propose a novel, intuitively interpretable, 3D point cloud
-  representation called 3D Modified Fisher Vectors (\textit{3DmFV}). Our representation is hybrid as it combines a 
+  representation called 3D Modified Fisher Vectors (3DmFV). Our representation is hybrid as it combines a 
   coarse discrete grid structure with continuous generalized Fisher vectors. Using the grid enables us to design a new 
   CNN architecture for real-time point cloud classification. In a series of performance analysis experiments, we 
   demonstrate competitive results or even better than state-of-the-art on challenging benchmark datasets while 
@@ -62,6 +62,9 @@ Alternatively, you can tweak the different GMM parameters (e.g. number of gaussi
 The model will be saved to `log` directory.
 Consecutive runs with the same directory name will be saved in numbered subdirectories in order to prevent accidental 
 overwrite of trained models.  
+
+### License
+Our code is released under MIT License (see LICENSE file for details).
 
 ### Disclaimer
 I am a mechanical engine, not a software engineer. git is relatively new to me. Therefore, if you find any place I have 
