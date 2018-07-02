@@ -2,7 +2,7 @@
 ---
 Created by [Yizhak Ben-Shabat (Itzik)](http://www.itzikbs.com), [Michael Lindenbaum](http://www.cs.technion.ac.il/people/mic/index.html), and [Anath Fischer](https://meeng.technion.ac.il/members/anath-fischer/) from Technion, I.I.T.
 
-https://github.com/sitzikbs/3DmFV-Net/blob/master/doc/3dmfvnet_architecture.PNG
+![3DmFV Architecture](https://github.com/sitzikbs/3DmFV-Net/blob/master/doc/3dmfvnet_architecture.PNG)
 
 
 *** add image ***
