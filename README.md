@@ -2,9 +2,8 @@
 ---
 Created by [Yizhak Ben-Shabat (Itzik)](http://www.itzikbs.com), [Michael Lindenbaum](http://www.cs.technion.ac.il/people/mic/index.html), and [Anath Fischer](https://meeng.technion.ac.il/members/anath-fischer/) from Technion, I.I.T.
 
-[embed]
-https://github.com/sitzikbs/3dmfvnet/blob/master/doc/3DmFV_Network_Architecture.pdf
-[/embed]
+https://github.com/sitzikbs/3DmFV-Net/blob/master/doc/3dmfvnet_architecture.PNG
+
 
 *** add image ***
 
@@ -30,7 +29,7 @@ number of points. The common solution of transforming the point cloud data into 
   maintaining robustness to various data corruptions. 
   
 ### Citation
-If you find our work useful in your research, please cite:
+If you find our work useful in your research, please cite our work:
 
 *** add bib citation ***
 
