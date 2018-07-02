@@ -1,11 +1,9 @@
-**3DmFV** : Three-Dimensional Point Cloud Classification in Real-TIme Using Convolutional Neural Networks
+**3DmFV** : Three-Dimensional Point Cloud Classification in Real-Time using Convolutional Neural Networks
 ---
 Created by [Yizhak Ben-Shabat (Itzik)](http://www.itzikbs.com), [Michael Lindenbaum](http://www.cs.technion.ac.il/people/mic/index.html), and [Anath Fischer](https://meeng.technion.ac.il/members/anath-fischer/) from Technion, I.I.T.
 
 ![3DmFV Architecture](https://github.com/sitzikbs/3DmFV-Net/blob/master/doc/3dmfvnet_architecture.PNG)
 
-
-*** add image ***
 
 ### Introduction
 This is the code for training a point cloud classification network using 3D modified Fisher Vectors.
@@ -31,8 +29,14 @@ number of points. The common solution of transforming the point cloud data into 
 ### Citation
 If you find our work useful in your research, please cite our work:
 
-*** add bib citation ***
+    @article{ben20173d,
+      title={3D Point Cloud Classification and Segmentation using 3D Modified Fisher Vector Representation for Convolutional Neural Networks},
+      author={Ben-Shabat, Yizhak and Lindenbaum, Michael and Fischer, Anath},
+      journal={arXiv preprint arXiv:1711.08241},
+      year={2017}
+    }
 
+*** citation will be updated once the paper is published (RA-L) ***
 
 ### Installation
 Install [Tensorflow](https://www.tensorflow.org). You will also need to install h5py, [scikit-learn](http://scikit-learn.org/stable/).
@@ -47,17 +51,17 @@ This code uses the infrastructure of [PointNet](https://github.com/charlesq34/po
 #### Classification
 Train the point cloud classification model using the default settings on ModelNet40, using: 
 
-`python train_cls.py`
+    python train_cls.py
 
 Alternatively, you can tweak the different GMM parameters (e.g. number of gaussians ) or learning parameters (e.g. learning rate) using
 
-`python train_cls.py  --gpu=0 --log_dir='log' --batch_size=64 --num_point=1024 --num_gaussians=8 --gmm_variance=0.0156 
---gmm_type='grid' --learning_rate=0.001  --model='voxnet_pfv' --max_epoch=200 --momentum=0.9 --optimizer='adam'
- --decay_step=200000  --weight_decay=0.0 --decay_rate=0.7`
+    python train_cls.py  --gpu=0 --log_dir='log' --batch_size=64 --num_point=1024 --num_gaussians=8 --gmm_variance=0.0156 
+    --gmm_type='grid' --learning_rate=0.001  --model='voxnet_pfv' --max_epoch=200 --momentum=0.9 --optimizer='adam'
+     --decay_step=200000  --weight_decay=0.0 --decay_rate=0.7
  
 The model will be saved to `log` directory.
-In order to prevent accidental overwrite of trained models consecutive runs with the same directory name will be saved 
-in numbered subdirectories. 
+Consecutive runs with the same directory name will be saved in numbered subdirectories in order to prevent accidental 
+overwrite of trained models.  
 
 ### Disclaimer
 I am a mechanical engine, not a software engineer. git is relatively new to me. Therefore, if you find any place I have 
