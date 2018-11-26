@@ -29,6 +29,19 @@ number of points. The common solution of transforming the point cloud data into 
 ### Citation
 If you find our work useful in your research, please cite our work:
 
+    @article{ben20183dmfv,
+      title={3DmFV: Three-Dimensional Point Cloud Classification in Real-Time Using Convolutional Neural Networks},
+      author={Ben-Shabat, Yizhak and Lindenbaum, Michael and Fischer, Anath},
+      journal={IEEE Robotics and Automation Letters},
+      volume={3},
+      number={4},
+      pages={3145--3152},
+      year={2018},
+      publisher={IEEE}
+    }
+
+Preprint: 
+
     @article{ben20173d,
       title={3D Point Cloud Classification and Segmentation using 3D Modified Fisher Vector Representation for Convolutional Neural Networks},
       author={Ben-Shabat, Yizhak and Lindenbaum, Michael and Fischer, Anath},
@@ -36,17 +49,16 @@ If you find our work useful in your research, please cite our work:
       year={2017}
     }
 
-*** citation will be updated once the paper is published (RA-L) ***
-
 ### Installation
 Install [Tensorflow](https://www.tensorflow.org). You will also need to install h5py, [scikit-learn](http://scikit-learn.org/stable/).
  
 The code was tested with Python 2.7, TensorFlow 1.2.1, CUDA 8.0.61 and cuDNN 5105 on Ubuntu 16.04.
-
+The code was reported by users to have also been tested on Windows 10 with python 3.6, tensorflow 1.12, cuda 9.0.176 and cudnn 9.0. 
 
 This code uses the infrastructure of [PointNet](https://github.com/charlesq34/pointnet) as a template,
  however, many substantial changes have been made to the CNN model and point cloud representation.
 
+Download the ModelNet40 data in this [link](https://shapenet.cs.stanford.edu/media/modelnet40_ply_hdf5_2048.zip).
 
 #### Classification
 Train the point cloud classification model using the default settings on ModelNet40, using: 
@@ -67,5 +79,5 @@ overwrite of trained models.
 Our code is released under MIT License (see LICENSE file for details).
 
 ### Disclaimer
-I am a mechanical engine, not a software engineer. git is relatively new to me. Therefore, if you find any place I have 
+I am a mechanical engineer, not a software engineer. git is relatively new to me. Therefore, if you find any place I have 
 made an error or have an improvement recommendation, I would appreciate your advice.

@@ -1,6 +1,5 @@
 import tensorflow as tf
 import numpy as np
-import math
 import sys
 import os
 
@@ -8,8 +7,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(BASE_DIR, '../utils'))
 import tf_util
-from transform_nets import feature_transform_net
-
 
 
 def placeholder_inputs(batch_size, n_points, gmm):

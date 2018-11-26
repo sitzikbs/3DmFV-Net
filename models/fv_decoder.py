@@ -8,11 +8,13 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(BASE_DIR, '../utils'))
 import tf_util
-sys.path.append('/home/itzikbs/PycharmProjects/fisherpointnet/EMD')
+
+# The following files (tf_auctionmatch, tf_sampling) are from the Pointnet++ paper and repository.
+# if you use it (using the EMD or joint loss for the decoder), please cite their work as well
+# link t otheir github repo: https://github.com/charlesq34/pointnet2
+sys.path.append(os.path.join(BASE_DIR, '../utils/EMD/'))
 import tf_auctionmatch
 import tf_sampling
-
-
 
 
 def placeholder_inputs(batch_size, n_points, gmm):
@@ -36,38 +38,21 @@ def get_model(points, w, mu, sigma, is_training, bn_decay=None, weigth_decay=0.0
     batch_size = points.get_shape()[0].value
     n_points = points.get_shape()[1].value
     n_gaussians = w.shape[0].value
-    res = int(np.round(np.power(n_gaussians,1.0/3.0)))
+    res = int(np.round(np.power(n_gaussians, 1.0/3.0)))
 
-
-    # fv = tf_util.get_fv_minmax(points, w, mu, sigma, flatten=False)
     fv = tf_util.get_fv_tf(points, w, mu, sigma, flatten=False)
 
-    grid_fisher = tf.reshape(fv,[batch_size,-1,res,res,res])
+    grid_fisher = tf.reshape(fv, [batch_size,-1,res,res,res])
     grid_fisher = tf.transpose(grid_fisher, [0, 2, 3, 4, 1])
 
-    #net = tf.reshape(grid_fisher,[batch_size, -1])
 
     #Decoder
     # Inception
     layer = 1
     net = inception_module(grid_fisher, n_filters=256, kernel_sizes=[3,5], is_training=is_training, bn_decay=bn_decay, scope='inception'+str(layer))
-    # layer = layer + 1
-    # net = inception_module(net, n_filters=128,kernel_sizes=[3, 5], is_training=is_training, bn_decay=bn_decay, scope='inception'+str(layer))
-    # layer = layer + 1
-    # net = inception_module(net, n_filters=256,kernel_sizes=[3, 5], is_training=is_training, bn_decay=bn_decay, scope='inception'+str(layer))
-    # layer = layer + 1
-    # net = tf_util.max_pool3d(net, [2, 2, 2], scope='maxpool'+str(layer), stride=[2, 2, 2], padding='SAME')
-    # layer = layer + 1
-    # net = inception_module(net, n_filters=256,kernel_sizes=[3,5], is_training=is_training, bn_decay=bn_decay, scope='inception'+str(layer))
-    # layer = layer + 1
-    # net = inception_module(net, n_filters=512,kernel_sizes=[3,5], is_training=is_training, bn_decay=bn_decay, scope='inception'+str(layer))
-    # layer = layer + 1
-    # net = tf_util.max_pool3d(net, [2, 2, 2], scope='maxpool'+str(layer), stride=[2, 2, 2], padding='SAME')
 
     net = tf.reshape(net,[batch_size, -1])
 
-    # net = tf_util.fully_connected(net, 1024, bn=True, is_training=is_training,
-    #                               scope='fc'+str(layer), bn_decay=bn_decay, weigth_decay=weigth_decay)
     layer = layer+1
     net = tf_util.fully_connected(net, 1024, bn=True, is_training=is_training,
                                   scope='fc'+str(layer), bn_decay=bn_decay, weigth_decay=weigth_decay)
