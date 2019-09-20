@@ -629,10 +629,14 @@ def get_3dmfv(points, w, mu, sigma, flatten=True):
 
     #Power normaliation
     alpha = 0.5
-    d_pi = tf.sign(d_pi) * tf.pow(tf.abs(d_pi),alpha)
-    d_mu = tf.sign(d_mu) * tf.pow(tf.abs(d_mu), alpha)
-    d_sigma = tf.sign(d_sigma) * tf.pow(tf.abs(d_sigma), alpha)
-
+#     d_pi = tf.sign(d_pi) * tf.pow(tf.abs(d_pi),alpha)
+#     d_mu = tf.sign(d_mu) * tf.pow(tf.abs(d_mu), alpha)
+#     d_sigma = tf.sign(d_sigma) * tf.pow(tf.abs(d_sigma), alpha)
+    epsilon = 1e-12
+    d_pi = tf.sign(d_pi) * tf.pow(tf.maximum(tf.abs(d_pi),epsilon),alpha)
+    d_mu = tf.sign(d_mu) * tf.pow(tf.maximum(tf.abs(d_mu),epsilon), alpha)
+    d_sigma = tf.sign(d_sigma) * tf.pow(tf.maximum(tf.abs(d_sigma),epsilon), alpha)
+    
     # L2 normaliation
     d_pi = tf.nn.l2_normalize(d_pi, dim=1)
     d_mu = tf.nn.l2_normalize(d_mu, dim=1)
@@ -712,10 +716,13 @@ def get_3dmfv_sym(points, w, mu, sigma, sym_type='max', flatten=True):
 
     #Power normaliation
     alpha = 0.5
-    d_pi = tf.sign(d_pi) * tf.pow(tf.abs(d_pi),alpha)
-    d_mu = tf.sign(d_mu) * tf.pow(tf.abs(d_mu), alpha)
-    d_sigma = tf.sign(d_sigma) * tf.pow(tf.abs(d_sigma), alpha)
-
+#     d_pi = tf.sign(d_pi) * tf.pow(tf.abs(d_pi),alpha)
+#     d_mu = tf.sign(d_mu) * tf.pow(tf.abs(d_mu), alpha)
+#     d_sigma = tf.sign(d_sigma) * tf.pow(tf.abs(d_sigma), alpha)
+    epsilon = 1e-12
+    d_pi = tf.sign(d_pi) * tf.pow(tf.maximum(tf.abs(d_pi),epsilon),alpha)
+    d_mu = tf.sign(d_mu) * tf.pow(tf.maximum(tf.abs(d_mu),epsilon), alpha)
+    d_sigma = tf.sign(d_sigma) * tf.pow(tf.maximum(tf.abs(d_sigma),epsilon), alpha) 
     # L2 normaliation
     d_pi = tf.nn.l2_normalize(d_pi, dim=1)
     d_mu = tf.nn.l2_normalize(d_mu, dim=1)
@@ -944,10 +951,14 @@ def get_3dmfv_seg(points, w, mu, sigma, flatten=True, original_n_points=None):
 
     #Power normaliation
     alpha = 0.5
-    d_pi = tf.sign(d_pi) * tf.pow(tf.abs(d_pi),alpha)
-    d_mu = tf.sign(d_mu) * tf.pow(tf.abs(d_mu), alpha)
-    d_sigma = tf.sign(d_sigma) * tf.pow(tf.abs(d_sigma), alpha)
-
+#     d_pi = tf.sign(d_pi) * tf.pow(tf.abs(d_pi),alpha)
+#     d_mu = tf.sign(d_mu) * tf.pow(tf.abs(d_mu), alpha)
+#     d_sigma = tf.sign(d_sigma) * tf.pow(tf.abs(d_sigma), alpha)
+    epsilon = 1e-12
+    d_pi = tf.sign(d_pi) * tf.pow(tf.maximum(tf.abs(d_pi),epsilon),alpha)
+    d_mu = tf.sign(d_mu) * tf.pow(tf.maximum(tf.abs(d_mu),epsilon), alpha)
+    d_sigma = tf.sign(d_sigma) * tf.pow(tf.maximum(tf.abs(d_sigma),epsilon), alpha)
+    
     # L2 normaliation
     d_pi = tf.nn.l2_normalize(d_pi, dim=1)
     d_mu = tf.nn.l2_normalize(d_mu, dim=1)
