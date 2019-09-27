@@ -666,4 +666,3 @@ if __name__ == "__main__":
     visualize_fv_pc_clas()
     # path_to_test_results = '/home/itzikbs/PycharmProjects/fisherpointnet/log_seg/test_results'
     # make_segmentation_triplets_for_paper(path_to_test_results, cls='all', export = True)
-    # visualize_pc_with_svd()
