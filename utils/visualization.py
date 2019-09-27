@@ -617,31 +617,6 @@ def visualize_fv_pc_clas():
 
     #plt.show()
 
-def visualize_pc_with_svd():
-    num_points = 1024
-    model_idx = 5
-    gpu_idx = 0
-
-    original_points, _ = provider.load_single_model(model_idx=model_idx, test_train='train', file_idxs=0, num_points=num_points)
-    original_points = provider.rotate_point_cloud_by_angle(original_points, np.pi/2)
-
-    # #Simple plane sanity check
-    # original_points = np.concatenate([np.random.rand(2, 1024), np.zeros([1, 1024])],axis=0)
-    # R = np.array([[0.7071, 0, 0.7071],
-    #               [0, 1, 0],
-    #               [-0.7071, 0, 0.7071]])
-    # original_points = np.transpose(np.dot(R ,original_points))
-
-    original_points = np.expand_dims(original_points,0)
-    pc_util.pyplot_draw_point_cloud(original_points[0,:,:])
-
-    sess = tf_util.get_session(gpu_idx, limit_gpu=True)
-    points_pl = tf.placeholder(tf.float32, shape=(1, num_points, 3))
-    svd_op = tf_util.pc_svd(points_pl)
-    rotated_points = sess.run(svd_op, feed_dict={points_pl:original_points})
-
-    pc_util.pyplot_draw_point_cloud(rotated_points[0,:,:])
-    plt.show()
 
 def main():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
